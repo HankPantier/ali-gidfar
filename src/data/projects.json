@@ -152,16 +152,5 @@
     "image_desktop_2": "/assets/screen/misato-shopping-center-2.jpg",
     "image_mobile_1": "/assets/mobile/misato-shopping-center-1.jpg",
     "image_mobile_2": "/assets/mobile/misato-shopping-center-2.jpg"
-  },
-  {
-    "id": "the-warner-building",
-    "title": "The Warner Building",
-    "location": "WASHINGTON, D.C.",
-    "year": 2024,
-    "description": "The Warner Building at 1299 Pennsylvania Avenue is a 13-story mixed-use landmark designed by Pei Cobb Freed & Partners that combines the historic Beaux-Arts Warner Theatre — originally opened in 1924 as the Earle Theatre — with a contemporary glass office tower. It holds the distinction of being the only private building in Washington whose exterior and interior are both designated historic landmarks. The theatre's interior is an opulent example of French Renaissance design, featuring barrel vaults, gilded surfaces, and carved mythological figures. Sitting atop Metro Center station, the building commands a prime Pennsylvania Avenue address with panoramic views of Freedom Plaza, the monuments, and the Capitol.",
-    "image_desktop_1": "/assets/screen/the-warner-building-1.jpg",
-    "image_desktop_2": "/assets/screen/the-warner-building-1.jpg",
-    "image_mobile_1": "/assets/mobile/the-warner-building-1.jpg",
-    "image_mobile_2": "/assets/mobile/the-warner-building-1.jpg"
   }
 ]
