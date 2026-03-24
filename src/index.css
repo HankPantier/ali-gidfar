@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --color-bg: #0a0c14;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-overlay: rgba(10, 12, 20, 0.85);
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --transition-slow: 1.5s ease-in-out;
+  --transition-fast: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden; /* Fullscreen, no scrolling */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography elements */
+h1 {
+  font-weight: 400;
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+p {
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  max-width: 600px;
+}
+
+.meta-info {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* App Layout */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Image Slider */
+.slider-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(10, 12, 20, 0.9) 0%, rgba(10, 12, 20, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Content Overlay */
+.content-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 4rem 4rem 4rem 12rem; /* Left padding matches sidebar width + spacing */
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Top Right Logo */
+.brand-logo {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  font-weight: 300;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.brand-logo:hover {
+  opacity: 0.7;
+}
+
+/* Sidebar Year Navigation */
+.sidebar {
+  position: absolute;
+  left: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.year-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  transform-origin: left center;
+  padding: 0;
+}
+
+.year-btn:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.year-btn.active {
+  color: #fff;
+  font-weight: 500;
+  transform: scale(1.2);
+}
+
+/* Dash navigation (Desktop & Mobile) */
+.mobile-nav {
+  display: flex;
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  gap: 0.5rem;
+}
+.mobile-nav .dash {
+  width: 28px;
+  height: 6px;
+  background: var(--color-text-muted);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+.mobile-nav .dash.active {
+  background: #fff;
+}
+
+/* Play/Pause Button */
+.control-btn {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.control-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Contact Card Overlay */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.contact-trigger {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+  animation: pulse-ring 2s infinite;
+}
+
+.contact-trigger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-card {
+  position: absolute;
+  bottom: 5rem;
+  right: 2.5rem;
+  background: var(--color-overlay);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 320px;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all var(--transition-fast);
+}
+
+.contact-card.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.contact-card h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.contact-card .firm {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.contact-card a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  transition: opacity 0.2s;
+}
+
+.contact-card a:hover {
+  opacity: 0.7;
+}
+
+.contact-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.slide-count {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  display: block;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .content-overlay {
+    padding: 2rem 2rem 8rem 2rem; /* Bring in padding, give room for dashes and buttons */
+  }
+  
+  .sidebar {
+    display: none; /* Hide year list on mobile per requirements */
+  }
+  
+  .brand-logo {
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .mobile-nav {
+    bottom: 4.5rem; /* Move up to prevent overlap with buttons */
+    width: 90%;
+    flex-wrap: wrap; /* Allow wrapping if too many dashes */
+    justify-content: center;
+  }
+  
+  .mobile-nav .dash {
+    width: 6px; /* dots on mobile */
+    height: 6px;
+    border-radius: 50%;
+  }
+  
+  .control-btn {
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+  
+  .contact-trigger {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .contact-card {
+    right: 1.5rem;
+    bottom: 4rem;
+    width: calc(100vw - 3rem);
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Site Name | Person Name]</title>
+
+  <!-- Basic SEO Meta Tags -->
+  <meta name="description" content="[Placeholder Description]" />
+  <meta name="keywords" content="[Keyword 1, Keyword 2, Keyword 3]" />
+  <meta name="author" content="[Author Name]" />
+
+  <!-- Open Graph (Facebook/LinkedIn) Meta Tags -->
+  <meta property="og:title" content="[Site Name | Person Name]" />
+  <meta property="og:description" content="[Placeholder Description]" />
+  <meta property="og:image" content="[URL to Image e.g., https://example.com/og-image.jpg]" />
+  <meta property="og:url" content="[https://example.com/]" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="[Site Name | Person Name]" />
+  <meta name="twitter:description" content="[Placeholder Description]" />
+  <meta name="twitter:image" content="[URL to Image e.g., https://example.com/twitter-image.jpg]" />
+
+  <!-- Custom Schema.org JSON-LD for Person and Portfolio Projects -->
+  <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org/",
+          "@type": "Person",
+          "name": "[Person Full Name]",
+          "url": "[https://example.com/]",
+          "image": "[https://example.com/profile.jpg]",
+          "sameAs": [
+            "[https://linkedin.com/in/username]",
+            "[https://twitter.com/username]",
+            "[https://github.com/username]"
+          ],
+          "jobTitle": "[Job Title]",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "[Company Name]"
+          }
+        },
+        {
+          "@context": "https://schema.org/",
+          "@type": "ItemList",
+          "name": "Portfolio Projects",
+          "description": "A collection of web development and software projects created by [Person Full Name].",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "[Project 1 Name]",
+                "url": "[https://example.com/project-1-link]",
+                "applicationCategory": "WebApplication",
+                "description": "[Brief 1-2 sentence description of what the project does and the tech stack used.]",
+                "image": "[https://example.com/project-1-screenshot.png]",
+                "author": {
+                  "@type": "Person",
+                  "name": "[Person Full Name]"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "SoftwareApplication",
+                "name": "[Project 2 Name]",
+                "url": "[https://github.com/username/project-2]",
+                "applicationCategory": "SoftwareCode",
+                "description": "[Brief description of the open-source library or code.]",
+                "author": {
+                  "@type": "Person",
+                  "name": "[Person Full Name]"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

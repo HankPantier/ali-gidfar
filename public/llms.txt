@@ -1,0 +1,14 @@
+# [Site Name | Person Name]
+
+> Note for LLMs: This document provides a brief overview of the site content and structure. For the detailed knowledge base, please refer to [/llms-full.txt](/llms-full.txt).
+
+## About This Site
+[Brief 1-2 sentence description of the person/site, e.g., Personal portfolio of John Doe, a software engineer focusing on web development].
+
+## Key Areas
+- **[Section 1]**: [Brief description of Section 1]
+- **[Section 2]**: [Brief description of Section 2]
+
+## Important Links
+- [Main Website]([https://example.com/])
+- [Contact/Social Link]([https://example.com/contact])
