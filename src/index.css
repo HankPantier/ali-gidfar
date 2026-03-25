@@ -110,18 +110,24 @@ p {
   justify-content: flex-end;
 }
 
-/* Top Right Logo */
-.brand-logo {
+/* Top Right Logo / Site Switcher */
+.site-switcher {
   position: absolute;
   top: 2rem;
   right: 2.5rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand-logo {
   font-family: var(--font-sans);
   color: var(--color-text);
   font-weight: 300;
   font-size: 1.25rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  z-index: 10;
   background: none;
   border: none;
   cursor: pointer;
@@ -131,6 +137,11 @@ p {
 
 .brand-logo:hover {
   opacity: 0.7;
+}
+
+.brand-logo.active {
+  border-bottom: 2px solid var(--color-text);
+  padding-bottom: 4px;
 }
 
 /* Sidebar Year Navigation */
@@ -338,7 +349,7 @@ p {
     display: none; /* Hide year list on mobile per requirements */
   }
   
-  .brand-logo {
+  .site-switcher {
     top: 1.5rem;
     right: 1.5rem;
   }
