@@ -9,7 +9,7 @@ const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v1
 const ContactIcon = () => <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" /></svg>;
 
 function App() {
-  const [activeSite, setActiveSite] = useState('ali');
+  const [activeSite, setActiveSite] = useState(window.__INITIAL_SITE__ || 'ali');
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [subSlideIndex, setSubSlideIndex] = useState(0); // 0 or 1
   const [isPlaying, setIsPlaying] = useState(true);
