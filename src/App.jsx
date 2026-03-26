@@ -8,9 +8,14 @@ const PlayIcon = () => <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
 const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>;
 const ContactIcon = () => <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" /></svg>;
 
+// Randomize starting state once at module load so site + slide are always in sync
+const _initialSite = window.__INITIAL_SITE__ || (Math.random() < 0.5 ? 'ali' : 'pace');
+const _initialData = _initialSite === 'ali' ? aliProjects : paceProjects;
+const _initialProjectIndex = Math.floor(Math.random() * _initialData.length);
+
 function App() {
-  const [activeSite, setActiveSite] = useState(window.__INITIAL_SITE__ || 'ali');
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [activeSite, setActiveSite] = useState(_initialSite);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(_initialProjectIndex);
   const [subSlideIndex, setSubSlideIndex] = useState(0); // 0 or 1
   const [isPlaying, setIsPlaying] = useState(true);
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -29,11 +34,6 @@ function App() {
   // Fallback to 0 if we switch sites and the current index is out of bounds
   const project = projectsData[currentProjectIndex] || projectsData[0];
 
-  // Reset index when site changes
-  useEffect(() => {
-    setCurrentProjectIndex(0);
-    setSubSlideIndex(0);
-  }, [activeSite]);
 
   // Track slide views to auto-open contact card
   const [slideCount, setSlideCount] = useState(0);
@@ -140,18 +140,18 @@ function App() {
   const contactInfo = activeSite === 'ali' ? {
     name: 'Ali Gidfar',
     firm: '',
-    address: '',
-    email: 'ali@pacedevco.com',
-    phone: '303.484.9200',
-    cell: '303.669.3370',
+    address: '1910 7th street, Boulder, CO',
+    email: 'ali@pacedevelopment.us',
+    phone: '',
+    cell: '303 669 3370',
     linkedin: ''
   } : {
     name: 'Pace Development',
     firm: '',
-    address: '1910 7th Street,Boulder, Colorado 80302',
-    email: 'ali@pacedevco.com',
-    phone: '303.484.9200',
-    cell: '303.669.3370',
+    address: '1910 7th street, Boulder, CO',
+    email: 'ali@pacedevelopment.us',
+    phone: '',
+    cell: '303 669 3370',
     linkedin: ''
   };
 
@@ -197,14 +197,14 @@ function App() {
       <div className="site-switcher">
         <button
           className={`brand-logo ${activeSite === 'ali' ? 'active' : ''}`}
-          onClick={() => setActiveSite('ali')}
+          onClick={() => { setActiveSite('ali'); setCurrentProjectIndex(0); setSubSlideIndex(0); }}
           aria-label="Ali Gidfar Site"
         >
           ALI GIDFAR
         </button>
         <button
           className={`brand-logo ${activeSite === 'pace' ? 'active' : ''}`}
-          onClick={() => setActiveSite('pace')}
+          onClick={() => { setActiveSite('pace'); setCurrentProjectIndex(0); setSubSlideIndex(0); }}
           aria-label="PACE Site"
           style={{ display: 'flex', alignItems: 'center' }}
         >
@@ -264,18 +264,21 @@ function App() {
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
 
-      {/* Contact Trigger */}
-      <button
-        className="contact-trigger"
-        onClick={() => setIsContactOpen(!isContactOpen)}
-        style={{ padding: 0, overflow: 'hidden' }}
-      >
-        <img
-          src={activeSite === 'ali' ? '/assets/Ali.png' : '/assets/pace.png'}
-          alt={activeSite === 'ali' ? 'Ali Gidfar Contact' : 'Pace Development Contact'}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </button>
+      {/* Contact Trigger + Stat */}
+      <div className="contact-trigger-wrap">
+        <span className="stat-label">Total sf. 13,925,000</span>
+        <button
+          className="contact-trigger"
+          onClick={() => setIsContactOpen(!isContactOpen)}
+          style={{ padding: 0, overflow: 'hidden' }}
+        >
+          <img
+            src={activeSite === 'ali' ? '/assets/Ali.png' : '/assets/pace.png'}
+            alt={activeSite === 'ali' ? 'Ali Gidfar Contact' : 'Pace Development Contact'}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </button>
+      </div>
 
       {/* Contact Card */}
       <div className={`contact-card ${isContactOpen ? 'open' : ''}`}>
