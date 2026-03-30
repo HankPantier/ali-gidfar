@@ -8,15 +8,25 @@ const PlayIcon = () => <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
 const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>;
 const ContactIcon = () => <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" /></svg>;
 
+const countProjectImages = (proj) => {
+  if (!proj) return 1;
+  let count = 0;
+  while (proj[`image_desktop_${count + 1}`] || proj[`image_mobile_${count + 1}`] || proj[`image_pace-mobile_${count + 1}`]) {
+    count++;
+  }
+  return count > 0 ? count : 1;
+};
+
 // Randomize starting state once at module load so site + slide are always in sync
 const _initialSite = window.__INITIAL_SITE__ || (Math.random() < 0.5 ? 'ali' : 'pace');
 const _initialData = _initialSite === 'ali' ? aliProjects : paceProjects;
 const _initialProjectIndex = Math.floor(Math.random() * _initialData.length);
+const _initialSubSlideIndex = Math.floor(Math.random() * countProjectImages(_initialData[_initialProjectIndex]));
 
 function App() {
   const [activeSite, setActiveSite] = useState(_initialSite);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(_initialProjectIndex);
-  const [subSlideIndex, setSubSlideIndex] = useState(0); // 0 or 1
+  const [subSlideIndex, setSubSlideIndex] = useState(_initialSubSlideIndex);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -31,6 +41,11 @@ function App() {
 
   const projectsData = activeSite === 'ali' ? aliProjects : paceProjects;
   const totalProjects = projectsData.length;
+
+  const aliYears = Array.from({length: 2026 - 1989 + 1}, (_, i) => 1989 + i);
+  const paceYears = Array.from({length: 2028 - 2012 + 1}, (_, i) => 2012 + i);
+  const timelineYears = activeSite === 'ali' ? aliYears : paceYears;
+
   // Fallback to 0 if we switch sites and the current index is out of bounds
   const project = projectsData[currentProjectIndex] || projectsData[0];
 
@@ -49,13 +64,7 @@ function App() {
   }, [slideCount]);
 
   const getProjectImageCount = useCallback((projIndex) => {
-    const proj = projectsData[projIndex];
-    if (!proj) return 1;
-    let count = 0;
-    while (proj[`image_desktop_${count + 1}`] || proj[`image_mobile_${count + 1}`] || proj[`image_pace-mobile_${count + 1}`]) {
-      count++;
-    }
-    return count > 0 ? count : 1;
+    return countProjectImages(projectsData[projIndex]);
   }, [projectsData]);
 
   // Navigation Logic
@@ -89,14 +98,29 @@ function App() {
     setSubSlideIndex(0);
   }, [totalProjects]);
 
+  const goToRandomSlide = useCallback(() => {
+    let randomProjIndex = Math.floor(Math.random() * totalProjects);
+    let imgCount = getProjectImageCount(randomProjIndex);
+    let randomSubIndex = Math.floor(Math.random() * imgCount);
+
+    if (randomProjIndex === currentProjectIndex && randomSubIndex === subSlideIndex) {
+      randomProjIndex = (randomProjIndex + 1) % totalProjects;
+      imgCount = getProjectImageCount(randomProjIndex);
+      randomSubIndex = 0;
+    }
+
+    setCurrentProjectIndex(randomProjIndex);
+    setSubSlideIndex(randomSubIndex);
+  }, [totalProjects, getProjectImageCount, currentProjectIndex, subSlideIndex]);
+
   // Autoscroll Timer
   useEffect(() => {
     let timer;
     if (isPlaying) {
-      timer = setTimeout(goToNextSlide, 6000); // 1.5s fade + ~4.5s readable time
+      timer = setTimeout(goToRandomSlide, 6000); // 1.5s fade + ~4.5s readable time
     }
     return () => clearTimeout(timer);
-  }, [isPlaying, currentProjectIndex, subSlideIndex, goToNextSlide]);
+  }, [isPlaying, currentProjectIndex, subSlideIndex, goToRandomSlide]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -142,7 +166,6 @@ function App() {
     firm: '',
     address: '1910 7th street, Boulder, CO',
     email: 'ali@pacedevelopment.us',
-    phone: '',
     cell: '303 669 3370',
     linkedin: ''
   } : {
@@ -150,7 +173,6 @@ function App() {
     firm: '',
     address: '1910 7th street, Boulder, CO',
     email: 'ali@pacedevelopment.us',
-    phone: '',
     cell: '303 669 3370',
     linkedin: ''
   };
@@ -214,19 +236,17 @@ function App() {
 
       {/* Sidebar - Desktop Years */}
       <div className="sidebar">
-        {projectsData.map((p, index) => (
-          <button
-            key={p.id}
-            className={`year-btn ${index === currentProjectIndex ? 'active' : ''}`}
-            onClick={() => {
-              setCurrentProjectIndex(index);
-              setSubSlideIndex(0);
-              setIsPlaying(true);
-            }}
-          >
-            {p.year}
-          </button>
-        ))}
+        {timelineYears.map((year) => {
+          const isActive = project.year === year;
+          return (
+            <span
+              key={year}
+              className={`year-label ${isActive ? 'active' : ''}`}
+            >
+              {year}
+            </span>
+          );
+        })}
       </div>
 
       {/* Mobile - Dots */}
@@ -287,7 +307,6 @@ function App() {
         {contactInfo.firm && <span className="firm" style={{ marginBottom: contactInfo.address ? '0.25rem' : '1.5rem' }}>{contactInfo.firm}</span>}
         {contactInfo.address && <span className="address" style={{ display: 'block', fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.5)', marginBottom: '1.5rem', lineHeight: '1.3' }}>{contactInfo.address}</span>}
         <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
-        <a href={`tel:${contactInfo.phone.replace(/[\s\.\-\(\)]+/g, '')}`}>O: {contactInfo.phone}</a>
         {contactInfo.cell && <a href={`tel:${contactInfo.cell.replace(/[\s\.\-\(\)]+/g, '')}`}>M: {contactInfo.cell}</a>}
         {contactInfo.linkedin && <a href={contactInfo.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>}
       </div>

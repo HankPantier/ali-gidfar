@@ -157,28 +157,23 @@ p {
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(1px, 1.25vh, 1rem);
 }
 
-.year-btn {
+.year-label {
   background: none;
   border: none;
   color: var(--color-text-muted);
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  cursor: pointer;
   text-align: left;
   transition: all var(--transition-fast);
   transform-origin: left center;
   padding: 0;
+  display: block;
 }
 
-.year-btn:hover {
-  color: #fff;
-  transform: scale(1.2);
-}
-
-.year-btn.active {
+.year-label.active {
   color: #fff;
   font-weight: 500;
   transform: scale(1.2);
