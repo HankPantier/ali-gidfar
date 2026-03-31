@@ -5,21 +5,10 @@
     "location": "HONG KONG",
     "year": 1989,
     "description": "The Bank of China Tower in Hong Kong is one of Asia's most iconic skyscrapers, designed by architect I.M. Pei and completed in 1989. Standing at 367 meters (1,205 feet), it served as Hong Kong's tallest building upon completion and houses the headquarters of Bank of China (Hong Kong) in the city's Central district. Its striking geometric, faceted exterior of triangular glass and aluminum panels was inspired by bamboo stalks, symbolizing growth and prosperity — though feng shui practitioners criticized its sharp angles for supposedly directing negative energy toward neighboring buildings. The tower's innovative composite space frame structure also allowed it to be built using significantly less steel than a conventional skyscraper of its size.",
-    "image_desktop_1": "/assets/screen/bank-of-china-tower-3.jpg",
-    "image_desktop_2": "/assets/screen/bank-of-china-tower-2.jpg",
-    "image_mobile_1": "/assets/mobile/bank-of-china-tower-mobile-3.jpg",
-    "image_mobile_2": "/assets/mobile/bank-of-china-tower-mobile-1.jpg"
-  },
-  {
-    "id": "us-holocaust-memorial-museum",
-    "title": "US Holocaust Memorial Museum",
-    "location": "WASHINGTON, D.C.",
-    "year": 1993,
-    "description": "The United States Holocaust Memorial Museum opened in Washington, D.C. in 1993. This 285,000-square-foot structure wears a neoclassical exterior that fits quietly into D.C.'s monumental streetscape. Inside, the architecture shifts dramatically — abstract forms drawn from  visits to Holocaust sites across Europe are deliberately designed to evoke deception, fear, and disorientation. Industrial details reference the machinery of systematic atrocity, while the open-ended spatial form invites each visitor to experience the building through their own lens of memory.",
-    "image_desktop_1": "/assets/screen/us-holocaust-memorial-museum-2.jpg",
-    "image_desktop_2": "/assets/screen/us-holocaust-memorial-museum-1.jpg",
-    "image_mobile_1": "/assets/mobile/us-holocaust-memorial-museum-2.jpg",
-    "image_mobile_2": "/assets/mobile/us-holocaust-memorial-museum-1.jpg"
+    "image_desktop_1": "/assets/screen/1-bank-of-china.jpg",
+    "image_desktop_2": "/assets/screen/16-bank-china.jpg",
+    "image_mobile_1": "/assets/mobile/1-bank-of-china.jpg",
+    "image_mobile_2": "/assets/mobile/16-bank-china.jpg"
   },
   {
     "id": "san-francisco-main-library",
@@ -27,21 +16,10 @@
     "location": "SAN FRANCISCO, CA",
     "year": 1996,
     "description": "San Francisco Main Library, located in the Civic Center district, was designed by Pei Cobb Freed & Partners and opened in 1996 as a modern complement to the Beaux-Arts City Hall across the street. The six-story, 376,000-square-foot building features a distinctive curved glass atrium that floods the interior with natural light and serves as its organizational core. Beyond its vast collection of books and digital resources, the library is notable for its dedicated community centers serving the deaf, blind, and LGBT communities — one of the first public libraries in the U.S. to do so. The building sparked a famous debate after opening over whether its design prioritized open space at the expense of shelf capacity, making it a flashpoint in the broader conversation about form versus function in civic architecture.",
-    "image_desktop_1": "/assets/screen/san-francisco-main-library-3.jpg",
-    "image_desktop_2": "/assets/screen/san-francisco-main-library-4.jpg",
-    "image_mobile_1": "/assets/mobile/san-francisco-main-library-3.jpg",
-    "image_mobile_2": "/assets/mobile/san-francisco-main-library-1.jpg"
-  },
-  {
-    "id": "tokyo-mid-town-complex",
-    "title": "Tokyo Mid Town Complex",
-    "location": "ROPPONGI. TOKYO",
-    "year": 2007,
-    "description": "Tokyo Midtown is a 6.1 million sq ft mixed-use development in Akasaka, Tokyo, Japan. Completed in March 2007, the $3 billion (¥370 billion) project includes office, residential, commercial, hotel, and leisure space, and the new quarters of the Suntory Museum of Art. When completed, the Midtown Tower was the tallest building in Tokyo. The main building complex is surrounded by Hinokicho Park, a 10-acre public park containing green areas along with works of art.",
-    "image_desktop_1": "/assets/screen/tokyo-mid-town-complex-1.jpg",
-    "image_desktop_2": "/assets/screen/tokyo-mid-town-complex-2.jpg",
-    "image_mobile_1": "/assets/mobile/tokyo-mid-town-complex-2.jpg",
-    "image_mobile_2": "/assets/mobile/tokyo-mid-town-complex-1.jpg"
+    "image_desktop_1": "/assets/screen/2-sf-main-library.jpg",
+    "image_desktop_2": "/assets/screen/17-sf-library.jpg",
+    "image_mobile_1": "/assets/mobile/2-sf-main-library.jpg",
+    "image_mobile_2": "/assets/mobile/17-sf-library.jpg"
   },
   {
     "id": "seoul-international-airport",
@@ -49,10 +27,10 @@
     "location": "INCHEON, SEOUL",
     "year": 2001,
     "description": "Terminal 1 measures 5,338,900 sq taking the form of an arc — a welcoming gesture to arriving passengers. The shape draws inspiration from the sleek curves of airplanes and the rolling waves along the nearby shoreline. The concourse's roof embodies a modern interpretation of a traditional Korean temple. Its gentle catenary curve reflects the elegant lines found in Korean architecture. Additionally, steel masts and cables, which support the roof, echo the silhouettes of ships in Incheon Bay, paying tribute to Korea's rich maritime history and strong steel industry.",
-    "image_desktop_1": "/assets/screen/seoul-international-airport-4.jpg",
-    "image_desktop_2": "/assets/screen/seoul-international-airport-3.jpg",
-    "image_mobile_1": "/assets/mobile/seoul-international-airport-2.jpg",
-    "image_mobile_2": "/assets/mobile/seoul-international-airport-1.jpg"
+    "image_desktop_1": "/assets/screen/3-seoul-airport.jpg",
+    "image_desktop_2": "/assets/screen/18-seoul.jpg",
+    "image_mobile_1": "/assets/mobile/3-seoul-airport.jpg",
+    "image_mobile_2": "/assets/mobile/18-seoul.jpg"
   },
   {
     "id": "paisano-green-community",
@@ -60,10 +38,10 @@
     "location": "EL PASO, TX",
     "year": 2012,
     "description": "As the first NetZero, fossil fuel-free, LEED Platinum, affordable senior housing project in the United States, Paisano Green Community has won the NAHRO National Award of Merit in Program Innovation and the AIA Colorado Citation Award. This 73-unit project is a healthy-living community adjacent to the major border crossing between El Paso, TX, and Juarez, Mexico.",
-    "image_desktop_1": "/assets/screen/paisano-green-community-1.jpg",
-    "image_desktop_2": "/assets/screen/paisano-green-community-2.jpg",
-    "image_mobile_1": "/assets/mobile/paisano-green-community-1.jpg",
-    "image_mobile_2": "/assets/mobile/paisano-green-community-2.jpg"
+    "image_desktop_1": "/assets/screen/4-paisano-green.jpg",
+    "image_desktop_2": "/assets/screen/20-paisano.jpg",
+    "image_mobile_1": "/assets/mobile/4-paisano-green.jpg",
+    "image_mobile_2": "/assets/mobile/20-paisano.jpg"
   },
   {
     "id": "aspen-wing-house",
@@ -71,10 +49,21 @@
     "location": "ASPEN, COLORADO",
     "year": 2016,
     "description": "This 6,800 sf residence is located in east Aspen off Cemetery Lane. The parti of the home is derived from the constraints of the site. The plan is composed of two ground floor wings that emulate open arms to receive guests, while at the same time opening to the spectacular views of Red Mountain across the valley. The east wing is programmatically dedicated to guest functions; great room, dining area, and guest bedroom suite. The east wing contains the family living functions; garage, mud room, pantry, kitchen and family living room.  Family rest functions are accommodated in the third wing bridging across both lower level wings, and contains a master suite on the west side, and two en-suite children's rooms on the east.",
-    "image_desktop_1": "/assets/screen/aspen-wing-house-3.jpg",
-    "image_desktop_2": "/assets/screen/aspen-wing-house-2.jpg",
-    "image_mobile_1": "/assets/mobile/aspen-wing-house-4.jpg",
-    "image_mobile_2": "/assets/mobile/aspen-wing-house-3.jpg"
+    "image_desktop_1": "/assets/screen/5-aspen-wing-house.jpg",
+    "image_desktop_2": "/assets/screen/15-aspen-wing.jpg",
+    "image_mobile_1": "/assets/mobile/5-aspen-wing-house.jpg",
+    "image_mobile_2": "/assets/mobile/15-aspen-wing.jpg"
+  },
+  {
+    "id": "tokyo-mid-town-complex",
+    "title": "Tokyo Mid Town Complex",
+    "location": "ROPPONGI. TOKYO",
+    "year": 2007,
+    "description": "Tokyo Midtown is a 6.1 million sq ft mixed-use development in Akasaka, Tokyo, Japan. Completed in March 2007, the $3 billion (¥370 billion) project includes office, residential, commercial, hotel, and leisure space, and the new quarters of the Suntory Museum of Art. When completed, the Midtown Tower was the tallest building in Tokyo. The main building complex is surrounded by Hinokicho Park, a 10-acre public park containing green areas along with works of art.",
+    "image_desktop_1": "/assets/screen/6-tokyo-midtown.jpg",
+    "image_desktop_2": "/assets/screen/22-tokyo-midtown.jpg",
+    "image_mobile_1": "/assets/mobile/6-tokyo-midtown.jpg",
+    "image_mobile_2": "/assets/mobile/22-tokyo-midtown.jpg"
   },
   {
     "id": "odonata-boulder",
@@ -82,10 +71,10 @@
     "location": "BOULDER, COLORADO",
     "year": 2023,
     "description": "Odonata is a boutique collection of ten luxury townhomes at Third and Pearl Streets, perched at the mouth of Boulder Canyon where the city meets the foothills. Each of the ten residences offers approximately 3,600 square feet of finished living space with floor-to-ceiling windows framing dramatic Flatiron views, expansive outdoor decks on every level, and a private in-unit elevator. Shared amenities include a gated entry, pool, and sundeck. Finishes throughout — hardwood floors, Spanish tile, Italian cabinetry — set a high benchmark, making Odonata one of Boulder's most refined small-scale residential developments, with urban walkability and immediate mountain access in equal measure.",
-    "image_desktop_1": "/assets/screen/odonata-boulder-1.jpg",
-    "image_desktop_2": "/assets/screen/odonata-boulder-2.jpg",
-    "image_mobile_1": "/assets/mobile/odonata-boulder-2.jpg",
-    "image_mobile_2": "/assets/mobile/odonata-boulder-1.jpg"
+    "image_desktop_1": "/assets/screen/7-odonata.jpg",
+    "image_desktop_2": "/assets/screen/25-4th.jpg",
+    "image_mobile_1": "/assets/mobile/7-odonata.jpg",
+    "image_mobile_2": "/assets/mobile/25-4th.jpg"
   },
   {
     "id": "queens-center",
@@ -93,10 +82,10 @@
     "location": "QUEENS, NEW YORK",
     "year": 2005,
     "description": "This four storey shopping center in the heart of Queens covers an area of 1,000,000 sf and represents the most visited shopping mall in New York City.",
-    "image_desktop_1": "/assets/screen/queens-center-3.jpg",
-    "image_desktop_2": "/assets/screen/queens-center-2.jpg",
-    "image_mobile_1": "/assets/mobile/queens-center-2.jpg",
-    "image_mobile_2": "/assets/mobile/queens-center-1.jpg"
+    "image_desktop_1": "/assets/screen/8-queens-center.jpg",
+    "image_desktop_2": "/assets/screen/24-queens.jpg",
+    "image_mobile_1": "/assets/mobile/8-queens-center.jpg",
+    "image_mobile_2": "/assets/mobile/24-queens.jpg"
   },
   {
     "id": "4th-street-house",
@@ -104,10 +93,12 @@
     "location": "BOULDER, COLORADO",
     "year": 2018,
     "description": "This is an “upside down” home: the site slopes steeply away from the street. The main living space is on street level, and is accessed from a foot bridge entering into the entry hall. The great room with ceilings that rise toward the views to the south has generous glazed openings on all sides with access to a large deck. This is four bedroom home measuring 4,600 sf.",
-    "image_desktop_1": "/assets/screen/4th-street-house-1.jpg",
-    "image_desktop_2": "/assets/screen/4th-street-house-2.jpg",
-    "image_mobile_1": "/assets/mobile/4th-street-house-1.jpg",
-    "image_mobile_2": "/assets/mobile/4th-street-house-3.jpg"
+    "image_desktop_1": "/assets/screen/9-3370.jpg",
+    "image_desktop_2": "/assets/screen/25-4th.jpg",
+    "image_desktop_3": "/assets/screen/31-3370.jpg",
+    "image_mobile_1": "/assets/mobile/9-3370.jpg",
+    "image_mobile_2": "/assets/mobile/25-4th.jpg",
+    "image_mobile_3": "/assets/mobile/31-3370.jpg"
   },
   {
     "id": "del-amo-fashion-center",
@@ -115,10 +106,10 @@
     "location": "TORRANCE, CALIFORNIA",
     "year": 2006,
     "description": "Del Amo Fashion Center in Torrance, California is a three-level regional shopping mall managed by Simon Property Group, spanning over 2.5 million square feet — the seventh largest mall in the United States. Originally formed in 1981 through the merger of two neighboring malls, it briefly held the title of largest enclosed shopping center in the country until the Mall of America opened in 1992. A major redesign by 5+design transformed the complex with light, glass, and open architecture, creating a human-centered retail experience complete with garden dining terraces, living green walls, skylights, and a 'city within a city' atmosphere of distinct shopping neighborhoods.",
-    "image_desktop_1": "/assets/screen/del-amo-fashion-center-3.jpg",
-    "image_desktop_2": "/assets/screen/del-amo-fashion-center-2.jpg",
-    "image_mobile_1": "/assets/mobile/del-amo-fashion-center-1.jpg",
-    "image_mobile_2": "/assets/mobile/del-amo-fashion-center-2.jpg"
+    "image_desktop_1": "/assets/screen/10-del-amo.jpg",
+    "image_desktop_2": "/assets/screen/26-del-amo.jpg",
+    "image_mobile_1": "/assets/mobile/10-del-amo.jpg",
+    "image_mobile_2": "/assets/mobile/26-del-amo.jpg"
   },
   {
     "id": "the-mark",
@@ -126,10 +117,10 @@
     "location": "DOWNTOWN BOULDER, COLORADO",
     "year": 2021,
     "description": "A collection of eight town homes with rooftop decks and private yards located in downtown Boulder on Pearl Street.",
-    "image_desktop_1": "/assets/screen/the-mark-1.jpg",
-    "image_desktop_2": "/assets/screen/the-mark-1.jpg",
-    "image_mobile_1": "/assets/mobile/the-mark-1.jpg",
-    "image_mobile_2": "/assets/mobile/the-mark-1.jpg"
+    "image_desktop_1": "/assets/screen/11-the-mark.jpg",
+    "image_desktop_2": "/assets/screen/27-the-mark.jpg",
+    "image_mobile_1": "/assets/mobile/11-the-mark.jpg",
+    "image_mobile_2": "/assets/mobile/27-the-mark.jpg"
   },
   {
     "id": "valdez-perry-library",
@@ -137,9 +128,22 @@
     "location": "DENVER, COLORADO",
     "year": 1996,
     "description": "Valdez-Perry Branch Library is a small but beloved 4,000-square-foot branch of the Denver Public Library, serving the historically isolated Globeville, Elyria, and Swansea neighborhoods of north-central Denver. Drawing inspiration from the classic Carnegie Library, the design centers on a light-filled reading room with restrained materials — concrete masonry, maple ceilings, and red slate floors. Named after civic leaders Bernard Valdez and John Perry, it opened in 1996 and ranks among the highest-circulating branches in the Denver system, a testament to the power of thoughtful civic architecture in underserved communities.",
-    "image_desktop_1": "/assets/screen/valdez-perry-library-1.jpg",
-    "image_desktop_2": "/assets/screen/valdez-perry-library-2.jpg",
-    "image_mobile_1": "/assets/mobile/valdez-perry-library-1.jpg",
-    "image_mobile_2": "/assets/mobile/valdez-perry-library-2.jpg"
+    "image_desktop_1": "/assets/screen/12-valdez.jpg",
+    "image_desktop_2": "/assets/screen/19-valdez.jpg",
+    "image_desktop_3": "/assets/screen/28-valdez.jpg",
+    "image_mobile_1": "/assets/mobile/12-valdez.jpg",
+    "image_mobile_2": "/assets/mobile/19-valdez.jpg",
+    "image_mobile_3": "/assets/mobile/28-valdez.jpg"
+  },
+  {
+    "id": "us-holocaust-memorial-museum",
+    "title": "US Holocaust Memorial Museum",
+    "location": "WASHINGTON, D.C.",
+    "year": 1993,
+    "description": "The United States Holocaust Memorial Museum opened in Washington, D.C. in 1993. This 285,000-square-foot structure wears a neoclassical exterior that fits quietly into D.C.'s monumental streetscape. Inside, the architecture shifts dramatically — abstract forms drawn from  visits to Holocaust sites across Europe are deliberately designed to evoke deception, fear, and disorientation. Industrial details reference the machinery of systematic atrocity, while the open-ended spatial form invites each visitor to experience the building through their own lens of memory.",
+    "image_desktop_1": "/assets/screen/13-us-holocaust.jpg",
+    "image_desktop_2": "/assets/screen/29-holocaust.jpg",
+    "image_mobile_1": "/assets/mobile/13-us-holocaust.jpg",
+    "image_mobile_2": "/assets/mobile/29-holocaust.jpg"
   }
 ]
