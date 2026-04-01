@@ -117,6 +117,15 @@
     "image_mobile_1": "/assets/mobile/13-us-holocaust.jpg"
   },
   {
+    "id": "misato-shopping-center-14",
+    "title": "Misato Shopping Center",
+    "location": "MISATO, JAPAN",
+    "year": 2024,
+    "description": "LaLaport Shin-Misato is a popular open-plan shopping mall located in Misato, Saitama Prefecture, just north of Tokyo and a short walk from Shin-Misato Station on the JR Musashino Line. Opened in September 2009, it is part of the Mitsui Shopping Park LaLaport chain — one of Japan's most recognized retail brands. Its open-spaced design gives the mall a relaxed, almost coastal ambience that makes it feel larger than its two floors suggest, setting it apart from the more overwhelming mega-malls common to the Tokyo metro area. Home to around 180 stores spanning fashion, interior design, entertainment, and food, the mall houses a strong mix of Japanese and international retailers.",
+    "image_desktop_1": "/assets/screen/14-laport.jpg",
+    "image_mobile_1": "/assets/mobile/14-laport.jpg"
+  },
+  {
     "id": "aspen-wing-house-15",
     "title": "Aspen Wing House",
     "location": "ASPEN, COLORADO",
@@ -171,6 +180,15 @@
     "image_mobile_1": "/assets/mobile/20-paisano.jpg"
   },
   {
+    "id": "aspen-wing-house-21",
+    "title": "Aspen Wing House",
+    "location": "ASPEN, COLORADO",
+    "year": 2016,
+    "description": "This 6,800 sf residence is located in east Aspen off Cemetery Lane. The parti of the home is derived from the constraints of the site. The plan is composed of two ground floor wings that emulate open arms to receive guests, while at the same time opening to the spectacular views of Red Mountain across the valley. The east wing is programmatically dedicated to guest functions; great room, dining area, and guest bedroom suite. The east wing contains the family living functions; garage, mud room, pantry, kitchen and family living room.  Family rest functions are accommodated in the third wing bridging across both lower level wings, and contains a master suite on the west side, and two en-suite children's rooms on the east.",
+    "image_desktop_1": "/assets/screen/21-aspen-wing.jpg",
+    "image_mobile_1": "/assets/mobile/21-aspen-wing.jpg"
+  },
+  {
     "id": "tokyo-mid-town-complex-22",
     "title": "Tokyo Mid Town Complex",
     "location": "ROPPONGI. TOKYO",
@@ -180,6 +198,15 @@
     "image_mobile_1": "/assets/mobile/22-tokyo-midtown.jpg"
   },
   {
+    "id": "odonata-boulder-23",
+    "title": "Odonata",
+    "location": "BOULDER, COLORADO",
+    "year": 2023,
+    "description": "Odonata is a boutique collection of ten luxury townhomes at Third and Pearl Streets, perched at the mouth of Boulder Canyon where the city meets the foothills. Each of the ten residences offers approximately 3,600 square feet of finished living space with floor-to-ceiling windows framing dramatic Flatiron views, expansive outdoor decks on every level, and a private in-unit elevator. Shared amenities include a gated entry, pool, and sundeck. Finishes throughout \u2014 hardwood floors, Spanish tile, Italian cabinetry \u2014 set a high benchmark, making Odonata one of Boulder's most refined small-scale residential developments, with urban walkability and immediate mountain access in equal measure.",
+    "image_desktop_1": "/assets/screen/23-odonata.jpg",
+    "image_mobile_1": "/assets/mobile/23-odonata.jpg"
+  },
+  {
     "id": "queens-center-24",
     "title": "Queens Center",
     "location": "QUEENS, NEW YORK",
@@ -187,15 +214,6 @@
     "description": "This four storey shopping center in the heart of Queens covers an area of 1,000,000 sf and represents the most visited shopping mall in New York City.",
     "image_desktop_1": "/assets/screen/24-queens.jpg",
     "image_mobile_1": "/assets/mobile/24-queens.jpg"
-  },
-  {
-    "id": "odonata-boulder-25",
-    "title": "Odonata",
-    "location": "BOULDER, COLORADO",
-    "year": 2023,
-    "description": "Odonata is a boutique collection of ten luxury townhomes at Third and Pearl Streets, perched at the mouth of Boulder Canyon where the city meets the foothills. Each of the ten residences offers approximately 3,600 square feet of finished living space with floor-to-ceiling windows framing dramatic Flatiron views, expansive outdoor decks on every level, and a private in-unit elevator. Shared amenities include a gated entry, pool, and sundeck. Finishes throughout \u2014 hardwood floors, Spanish tile, Italian cabinetry \u2014 set a high benchmark, making Odonata one of Boulder's most refined small-scale residential developments, with urban walkability and immediate mountain access in equal measure.",
-    "image_desktop_1": "/assets/screen/25-4th.jpg",
-    "image_mobile_1": "/assets/mobile/25-4th.jpg"
   },
   {
     "id": "4th-street-house-25",
@@ -241,6 +259,15 @@
     "description": "The United States Holocaust Memorial Museum opened in Washington, D.C. in 1993. This 285,000-square-foot structure wears a neoclassical exterior that fits quietly into D.C.'s monumental streetscape. Inside, the architecture shifts dramatically \u2014 abstract forms drawn from  visits to Holocaust sites across Europe are deliberately designed to evoke deception, fear, and disorientation. Industrial details reference the machinery of systematic atrocity, while the open-ended spatial form invites each visitor to experience the building through their own lens of memory.",
     "image_desktop_1": "/assets/screen/29-holocaust.jpg",
     "image_mobile_1": "/assets/mobile/29-holocaust.jpg"
+  },
+  {
+    "id": "misato-shopping-center-30",
+    "title": "Misato Shopping Center",
+    "location": "MISATO, JAPAN",
+    "year": 2024,
+    "description": "LaLaport Shin-Misato is a popular open-plan shopping mall located in Misato, Saitama Prefecture, just north of Tokyo and a short walk from Shin-Misato Station on the JR Musashino Line. Opened in September 2009, it is part of the Mitsui Shopping Park LaLaport chain — one of Japan's most recognized retail brands. Its open-spaced design gives the mall a relaxed, almost coastal ambience that makes it feel larger than its two floors suggest, setting it apart from the more overwhelming mega-malls common to the Tokyo metro area. Home to around 180 stores spanning fashion, interior design, entertainment, and food, the mall houses a strong mix of Japanese and international retailers.",
+    "image_desktop_1": "/assets/screen/30-laport.jpg",
+    "image_mobile_1": "/assets/mobile/30-laport.jpg"
   },
   {
     "id": "4th-street-house-31",
