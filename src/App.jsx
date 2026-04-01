@@ -8,25 +8,14 @@ const PlayIcon = () => <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
 const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>;
 const ContactIcon = () => <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" /></svg>;
 
-const countProjectImages = (proj) => {
-  if (!proj) return 1;
-  let count = 0;
-  while (proj[`image_desktop_${count + 1}`] || proj[`image_mobile_${count + 1}`] || proj[`image_pace-mobile_${count + 1}`]) {
-    count++;
-  }
-  return count > 0 ? count : 1;
-};
-
 // Randomize starting state once at module load so site + slide are always in sync
 const _initialSite = window.__INITIAL_SITE__ || (Math.random() < 0.5 ? 'ali' : 'pace');
 const _initialData = _initialSite === 'ali' ? aliProjects : paceProjects;
 const _initialProjectIndex = Math.floor(Math.random() * _initialData.length);
-const _initialSubSlideIndex = Math.floor(Math.random() * countProjectImages(_initialData[_initialProjectIndex]));
 
 function App() {
   const [activeSite, setActiveSite] = useState(_initialSite);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(_initialProjectIndex);
-  const [subSlideIndex, setSubSlideIndex] = useState(_initialSubSlideIndex);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -49,13 +38,12 @@ function App() {
   // Fallback to 0 if we switch sites and the current index is out of bounds
   const project = projectsData[currentProjectIndex] || projectsData[0];
 
-
   // Track slide views to auto-open contact card
   const [slideCount, setSlideCount] = useState(0);
 
   useEffect(() => {
     setSlideCount((prev) => prev + 1);
-  }, [currentProjectIndex, subSlideIndex]);
+  }, [currentProjectIndex]);
 
   useEffect(() => {
     if (slideCount === 6) { // 1 on mount + 5 transitions
@@ -63,64 +51,23 @@ function App() {
     }
   }, [slideCount]);
 
-  const getProjectImageCount = useCallback((projIndex) => {
-    return countProjectImages(projectsData[projIndex]);
-  }, [projectsData]);
-
   // Navigation Logic
-  const goToNextSlide = useCallback(() => {
-    setSubSlideIndex((prevSub) => {
-      const imgCount = getProjectImageCount(currentProjectIndex);
-      if (prevSub < imgCount - 1) return prevSub + 1;
-
-      setCurrentProjectIndex((prevProj) => (prevProj + 1) % totalProjects);
-      return 0; // Reset subslide
-    });
-  }, [totalProjects, currentProjectIndex, getProjectImageCount]);
-
-  const goToPrevSlide = useCallback(() => {
-    setSubSlideIndex((prevSub) => {
-      if (prevSub > 0) return prevSub - 1;
-
-      const prevProjIndex = currentProjectIndex === 0 ? totalProjects - 1 : currentProjectIndex - 1;
-      setCurrentProjectIndex(prevProjIndex);
-      return Math.max(0, getProjectImageCount(prevProjIndex) - 1);
-    });
-  }, [totalProjects, currentProjectIndex, getProjectImageCount]);
-
   const goToPrevProject = useCallback(() => {
     setCurrentProjectIndex((prev) => (prev === 0 ? totalProjects - 1 : prev - 1));
-    setSubSlideIndex(0);
   }, [totalProjects]);
 
   const goToNextProject = useCallback(() => {
     setCurrentProjectIndex((prev) => (prev + 1) % totalProjects);
-    setSubSlideIndex(0);
   }, [totalProjects]);
-
-  const goToRandomSlide = useCallback(() => {
-    let randomProjIndex = Math.floor(Math.random() * totalProjects);
-    let imgCount = getProjectImageCount(randomProjIndex);
-    let randomSubIndex = Math.floor(Math.random() * imgCount);
-
-    if (randomProjIndex === currentProjectIndex && randomSubIndex === subSlideIndex) {
-      randomProjIndex = (randomProjIndex + 1) % totalProjects;
-      imgCount = getProjectImageCount(randomProjIndex);
-      randomSubIndex = 0;
-    }
-
-    setCurrentProjectIndex(randomProjIndex);
-    setSubSlideIndex(randomSubIndex);
-  }, [totalProjects, getProjectImageCount, currentProjectIndex, subSlideIndex]);
 
   // Autoscroll Timer
   useEffect(() => {
     let timer;
     if (isPlaying) {
-      timer = setTimeout(goToRandomSlide, 6000); // 1.5s fade + ~4.5s readable time
+      timer = setTimeout(goToNextProject, 6000); // 1.5s fade + ~4.5s readable time
     }
     return () => clearTimeout(timer);
-  }, [isPlaying, currentProjectIndex, subSlideIndex, goToRandomSlide]);
+  }, [isPlaying, currentProjectIndex, goToNextProject]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -149,8 +96,8 @@ function App() {
     };
 
     const handleSwipe = () => {
-      if (touchEndX < touchStartX - 50) goToNextSlide();
-      if (touchEndX > touchStartX + 50) goToPrevSlide();
+      if (touchEndX < touchStartX - 50) goToNextProject();
+      if (touchEndX > touchStartX + 50) goToPrevProject();
     };
 
     window.addEventListener('touchstart', handleTouchStart);
@@ -159,7 +106,7 @@ function App() {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [goToNextSlide, goToPrevSlide]);
+  }, [goToNextProject, goToPrevProject]);
 
   const contactInfo = activeSite === 'ali' ? {
     name: 'Ali Gidfar',
@@ -177,39 +124,19 @@ function App() {
     linkedin: ''
   };
 
-  // Sub-slide Images Helper
-  const getProjectImages = (proj) => {
-    const images = [];
-    let i = 1;
-    while (proj[`image_desktop_${i}`] || proj[`image_mobile_${i}`] || proj[`image_pace-mobile_${i}`]) {
-      images.push({
-        desktop: proj[`image_desktop_${i}`] || proj.image_desktop_1,
-        mobile: proj[`image_mobile_${i}`] || proj[`image_pace-mobile_${i}`] || proj[`image_desktop_${i}`] || proj.image_desktop_1
-      });
-      i++;
-    }
-    if (images.length === 0) {
-      images.push({ desktop: '', mobile: '' });
-    }
-    return images;
-  };
-
   return (
     <div className="app-container">
       {/* Background Images */}
       <div className="slider-container">
         {projectsData.map((p, pIndex) => {
-          const images = getProjectImages(p);
+          const mobileImage = p.image_mobile_1 || p['image_pace-mobile_1'] || p.image_desktop_1;
+          const desktopImage = p.image_desktop_1;
           return (
-            <div key={p.id}>
-              {images.map((img, subIndex) => (
-                <div
-                  key={`${p.id}-${subIndex}`}
-                  className={`slide ${pIndex === currentProjectIndex && subSlideIndex === subIndex ? 'active' : ''}`}
-                  style={{ backgroundImage: `url(${isMobile ? img.mobile : img.desktop})` }}
-                />
-              ))}
-            </div>
+            <div
+              key={p.id}
+              className={`slide ${pIndex === currentProjectIndex ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${isMobile ? mobileImage : desktopImage})` }}
+            />
           );
         })}
         <div className="gradient-overlay"></div>
@@ -219,14 +146,14 @@ function App() {
       <div className="site-switcher">
         <button
           className={`brand-logo ${activeSite === 'ali' ? 'active' : ''}`}
-          onClick={() => { setActiveSite('ali'); setCurrentProjectIndex(0); setSubSlideIndex(0); }}
+          onClick={() => { setActiveSite('ali'); setCurrentProjectIndex(0); }}
           aria-label="Ali Gidfar Site"
         >
           ALI GIDFAR
         </button>
         <button
           className={`brand-logo ${activeSite === 'pace' ? 'active' : ''}`}
-          onClick={() => { setActiveSite('pace'); setCurrentProjectIndex(0); setSubSlideIndex(0); }}
+          onClick={() => { setActiveSite('pace'); setCurrentProjectIndex(0); }}
           aria-label="PACE Site"
           style={{ display: 'flex', alignItems: 'center' }}
         >
@@ -257,7 +184,6 @@ function App() {
             className={`dash ${index === currentProjectIndex ? 'active' : ''}`}
             onClick={() => {
               setCurrentProjectIndex(index);
-              setSubSlideIndex(0);
               setIsPlaying(true);
             }}
             aria-label={`Go to project from ${p.year}`}
@@ -267,7 +193,7 @@ function App() {
 
       {/* Project Text Overlay */}
       <div className="content-overlay">
-        <span className="slide-count">0{(currentProjectIndex + 1)} / {totalProjects < 10 ? `0${totalProjects}` : totalProjects}</span>
+        <span className="slide-count">{(currentProjectIndex + 1).toString().padStart(2, '0')} / {totalProjects.toString().padStart(2, '0')}</span>
         <h1>{project.title}</h1>
         <span className="meta-info">
           {project.location} — {project.year}
