@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     let timer;
     if (isPlaying) {
-      timer = setTimeout(goToNextProject, 6000); // 1.5s fade + ~4.5s readable time
+      timer = setTimeout(goToNextProject, 4000);
     }
     return () => clearTimeout(timer);
   }, [isPlaying, currentProjectIndex, goToNextProject]);
