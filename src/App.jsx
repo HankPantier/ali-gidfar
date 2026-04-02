@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     let timer;
     if (isPlaying) {
-      timer = setTimeout(goToNextProject, 4000);
+      timer = setTimeout(goToNextProject, 2500);
     }
     return () => clearTimeout(timer);
   }, [isPlaying, currentProjectIndex, goToNextProject]);
