@@ -367,6 +367,10 @@ p {
   .content-overlay {
     padding: 2rem 2rem 8rem 2rem; /* Bring in padding, give room for dashes and buttons */
   }
+
+  .content-overlay p {
+    display: none; /* Hide description on mobile, show title/location only */
+  }
   
   .sidebar {
     display: none; /* Hide year list on mobile per requirements */
