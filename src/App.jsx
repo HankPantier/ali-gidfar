@@ -13,6 +13,13 @@ const _initialSite = window.__INITIAL_SITE__ || (Math.random() < 0.5 ? 'ali' : '
 const _initialData = _initialSite === 'ali' ? aliProjects : paceProjects;
 const _initialProjectIndex = Math.floor(Math.random() * _initialData.length);
 
+// Preload the initial slide image so it's ready before React mounts
+const _initialProject = _initialData[_initialProjectIndex];
+const _preloadImg = new Image();
+_preloadImg.src = window.innerWidth <= 768
+  ? (_initialProject.image_mobile_1 || _initialProject['image_pace-mobile_1'] || _initialProject.image_desktop_1)
+  : _initialProject.image_desktop_1;
+
 function App() {
   const [activeSite, setActiveSite] = useState(_initialSite);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(_initialProjectIndex);
@@ -131,11 +138,12 @@ function App() {
         {projectsData.map((p, pIndex) => {
           const mobileImage = p.image_mobile_1 || p['image_pace-mobile_1'] || p.image_desktop_1;
           const desktopImage = p.image_desktop_1;
+          const isNearby = Math.abs(pIndex - currentProjectIndex) <= 1;
           return (
             <div
               key={p.id}
               className={`slide ${pIndex === currentProjectIndex ? 'active' : ''}`}
-              style={{ backgroundImage: `url(${isMobile ? mobileImage : desktopImage})` }}
+              style={isNearby ? { backgroundImage: `url(${isMobile ? mobileImage : desktopImage})` } : {}}
             />
           );
         })}
