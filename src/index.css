@@ -410,3 +410,10 @@ p {
     width: calc(100vw - 3rem);
   }
 }
+
+/* Tighten sidebar gap on short screens (laptops) */
+@media (max-height: 850px) {
+  .sidebar {
+    gap: clamp(1px, 0.65vh, 0.5rem);
+  }
+}
