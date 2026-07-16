@@ -148,8 +148,14 @@ p {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Sidebar Year Navigation */
+/* Sidebar Year Navigation — sizes driven by fit logic via CSS vars */
 .sidebar {
+  --year-font-size: 0.85rem;
+  --year-line-height: 1.15;
+  --year-gap: clamp(1px, 1.25vh, 1rem);
+  --year-active-scale: 1.2;
+  --sidebar-safe: 3rem;
+
   position: absolute;
   left: 2.5rem;
   top: 50%;
@@ -157,7 +163,25 @@ p {
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: clamp(1px, 1.25vh, 1rem);
+  gap: var(--year-gap);
+  max-height: calc(100dvh - var(--sidebar-safe) * 2);
+  overflow: hidden;
+}
+
+.sidebar.sidebar--scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.sidebar.sidebar--scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar.sidebar--scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
 }
 
 .year-label {
@@ -165,18 +189,20 @@ p {
   border: none;
   color: var(--color-text-muted);
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: var(--year-font-size);
+  line-height: var(--year-line-height);
   text-align: left;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
   transform-origin: left center;
   padding: 0;
   display: block;
+  flex-shrink: 0;
 }
 
 .year-label.active {
   color: #fff;
   font-weight: 500;
-  transform: scale(1.2);
+  transform: scale(var(--year-active-scale));
 }
 
 /* Dash navigation (Desktop & Mobile) */
@@ -408,12 +434,5 @@ p {
     right: 1.5rem;
     bottom: 4rem;
     width: calc(100vw - 3rem);
-  }
-}
-
-/* Tighten sidebar gap on short screens (laptops) */
-@media (max-height: 850px) {
-  .sidebar {
-    gap: clamp(1px, 0.65vh, 0.5rem);
   }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import aliProjects from './data/projects.json';
 import paceProjects from './data/projects-pace.json';
 import './index.css';
@@ -7,6 +7,91 @@ import './index.css';
 const PlayIcon = () => <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>;
 const PauseIcon = () => <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>;
 const ContactIcon = () => <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" /></svg>;
+
+const SIDEBAR_SAFE_REM = 3;
+
+/** Scale year list to fit viewport; enable scroll only when mins still overflow. */
+function computeYearFit(yearCount, availableHeightPx) {
+  const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  const preferred = {
+    fontSize: 0.85 * rem,
+    lineHeight: 1.15,
+    gap: Math.min(rem, Math.max(1, window.innerHeight * 0.0125)),
+    activeScale: 1.2,
+  };
+  const min = {
+    fontSize: Math.max(10, 0.65 * rem),
+    lineHeight: 1.05,
+    gap: 0,
+    activeScale: 1.05,
+  };
+
+  const heightAt = ({ fontSize, lineHeight, gap, activeScale }) => {
+    const row = fontSize * lineHeight;
+    return yearCount * row + Math.max(0, yearCount - 1) * gap + row * (activeScale - 1);
+  };
+
+  if (heightAt(preferred) <= availableHeightPx) {
+    return { ...preferred, needsScroll: false };
+  }
+
+  if (heightAt(min) > availableHeightPx) {
+    return { ...min, needsScroll: true };
+  }
+
+  // Smallest compression t in [0,1] that fits (0 = preferred, 1 = min)
+  let lo = 0;
+  let hi = 1;
+  for (let i = 0; i < 20; i++) {
+    const t = (lo + hi) / 2;
+    const mid = {
+      fontSize: preferred.fontSize + (min.fontSize - preferred.fontSize) * t,
+      lineHeight: preferred.lineHeight + (min.lineHeight - preferred.lineHeight) * t,
+      gap: preferred.gap + (min.gap - preferred.gap) * t,
+      activeScale: preferred.activeScale + (min.activeScale - preferred.activeScale) * t,
+    };
+    if (heightAt(mid) <= availableHeightPx) {
+      hi = t;
+    } else {
+      lo = t;
+    }
+  }
+
+  const t = hi;
+  return {
+    fontSize: preferred.fontSize + (min.fontSize - preferred.fontSize) * t,
+    lineHeight: preferred.lineHeight + (min.lineHeight - preferred.lineHeight) * t,
+    gap: preferred.gap + (min.gap - preferred.gap) * t,
+    activeScale: preferred.activeScale + (min.activeScale - preferred.activeScale) * t,
+    needsScroll: false,
+  };
+}
+
+function useFitSidebarYears(sidebarRef, yearCount) {
+  useEffect(() => {
+    const el = sidebarRef.current;
+    if (!el || yearCount < 1) return;
+
+    const applyFit = () => {
+      // Skip when sidebar is hidden (mobile)
+      if (getComputedStyle(el).display === 'none') return;
+
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      const available = window.innerHeight - SIDEBAR_SAFE_REM * rem * 2;
+      const fit = computeYearFit(yearCount, Math.max(0, available));
+
+      el.style.setProperty('--year-font-size', `${fit.fontSize}px`);
+      el.style.setProperty('--year-line-height', String(fit.lineHeight));
+      el.style.setProperty('--year-gap', `${fit.gap}px`);
+      el.style.setProperty('--year-active-scale', String(fit.activeScale));
+      el.classList.toggle('sidebar--scroll', fit.needsScroll);
+    };
+
+    applyFit();
+    window.addEventListener('resize', applyFit);
+    return () => window.removeEventListener('resize', applyFit);
+  }, [sidebarRef, yearCount]);
+}
 
 // Randomize starting state once at module load so site + slide are always in sync
 const _initialSite = window.__INITIAL_SITE__ || (Math.random() < 0.5 ? 'ali' : 'pace');
@@ -26,6 +111,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const sidebarRef = useRef(null);
 
   // Check mobile breakpoint for image selection
   useEffect(() => {
@@ -41,6 +127,8 @@ function App() {
   const aliYears = Array.from({length: 2026 - 1989 + 1}, (_, i) => 1989 + i);
   const paceYears = Array.from({length: 2028 - 2012 + 1}, (_, i) => 2012 + i);
   const timelineYears = activeSite === 'ali' ? aliYears : paceYears;
+
+  useFitSidebarYears(sidebarRef, timelineYears.length);
 
   // Fallback to 0 if we switch sites and the current index is out of bounds
   const project = projectsData[currentProjectIndex] || projectsData[0];
@@ -170,7 +258,7 @@ function App() {
       </div>
 
       {/* Sidebar - Desktop Years */}
-      <div className="sidebar">
+      <div className="sidebar" ref={sidebarRef}>
         {timelineYears.map((year) => {
           const isActive = project.year === year;
           return (
