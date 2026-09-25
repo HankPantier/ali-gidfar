@@ -93,8 +93,8 @@ function useFitSidebarYears(sidebarRef, yearCount) {
   }, [sidebarRef, yearCount]);
 }
 
-// Randomize starting state once at module load so site + slide are always in sync
-const _initialSite = window.__INITIAL_SITE__ || (Math.random() < 0.5 ? 'ali' : 'pace');
+// Always open on Pace. Ali is only reached by clicking that button.
+const _initialSite = 'pace';
 const _initialData = _initialSite === 'ali' ? aliProjects : paceProjects;
 const _initialProjectIndex = Math.floor(Math.random() * _initialData.length);
 
